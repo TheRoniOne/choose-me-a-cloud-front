@@ -15,8 +15,20 @@ const Login = () => {
       password: "",
     },
 
-    onSubmit: (values: Values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values: Values) => {
+      const response = await fetch("http://127.0.0.1:8000/api/token/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      const json = await response.json();
+
+      json.access && localStorage.setItem("jwt", json.access);
+
+      console.log(json.access);
     },
   });
 
