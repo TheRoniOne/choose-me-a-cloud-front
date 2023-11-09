@@ -6,17 +6,6 @@ interface User {
   email: string;
 }
 
-interface SocialAuthArgs {
-  provider: string;
-  state: string;
-  code: string;
-}
-
-interface SocialAuthResponse {
-  success: boolean;
-  user: User;
-}
-
 interface LoginArgs {
   username: string;
   password: string;
@@ -26,18 +15,6 @@ const authAPIService = apiService.injectEndpoints({
   endpoints: (builder) => ({
     retrieveUser: builder.query<User, void>({
       query: () => "/users/me/",
-    }),
-    socialAuthenticate: builder.mutation<SocialAuthResponse, SocialAuthArgs>({
-      query: ({ provider, state, code }) => ({
-        url: `/o/${provider}/?state=${encodeURIComponent(
-          state
-        )}&code=${encodeURIComponent(code)}`,
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      }),
     }),
     login: builder.mutation<void, LoginArgs>({
       query: ({ username, password }) => ({
@@ -63,7 +40,6 @@ const authAPIService = apiService.injectEndpoints({
 
 export const {
   useRetrieveUserQuery,
-  useSocialAuthenticateMutation,
   useLoginMutation,
   useVerifyMutation,
   useLogoutMutation,
