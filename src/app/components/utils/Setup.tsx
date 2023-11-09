@@ -4,7 +4,11 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 import { useAppDispatch } from "@/app/redux/hooks";
-import { setAuth, finishInitialLoad } from "@/app/redux/slices/authSlice";
+import {
+  setAuth,
+  finishInitialLoad,
+  startInitialLoad,
+} from "@/app/redux/slices/authSlice";
 import { useVerifyMutation } from "@/app/redux/services/authAPIService";
 
 export default function Setup() {
@@ -12,6 +16,8 @@ export default function Setup() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    dispatch(startInitialLoad());
+
     verify(undefined)
       .unwrap()
       .then(() => {
