@@ -7,6 +7,8 @@ export const store = configureStore({
     [apiService.reducerPath]: apiService.reducer,
     auth: authReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(apiService.middleware),
   devTools: process.env.NODE_ENV !== "production",
 });
 

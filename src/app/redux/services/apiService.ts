@@ -8,8 +8,9 @@ import { setAuth, logout } from "@/app/redux/slices/authSlice";
 import { Mutex } from "async-mutex";
 
 const mutex = new Mutex();
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND ?? "http://localhost:8000/";
 const baseQuery = fetchBaseQuery({
-  baseUrl: `${process.env.BACKEND_URL}/api/`,
+  baseUrl: `${BACKEND_URL}api/`,
   credentials: "include",
 });
 
