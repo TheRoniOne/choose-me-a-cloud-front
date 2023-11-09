@@ -1,11 +1,8 @@
 "use client";
 
-import { useAppDispatch } from "@/app/redux/hooks";
-import {
-  LoginArgs,
-  useLoginMutation,
-} from "@/app/redux/services/authAPIService";
-import { setAuth } from "@/app/redux/slices/authSlice";
+import { useAppDispatch } from "@/redux/hooks";
+import { LoginArgs, useLoginMutation } from "@/redux/services/authAPIService";
+import { setAuth } from "@/redux/slices/authSlice";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";

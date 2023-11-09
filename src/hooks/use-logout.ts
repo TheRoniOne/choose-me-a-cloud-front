@@ -1,6 +1,6 @@
-import { useAppDispatch } from "@/app/redux/hooks";
-import { useLogoutMutation } from "@/app/redux/services/authAPIService";
-import { logout as setLogout } from "@/app/redux/slices/authSlice";
+import { useAppDispatch } from "@/redux/hooks";
+import { useLogoutMutation } from "@/redux/services/authAPIService";
+import { logout as setLogout } from "@/redux/slices/authSlice";
 import { useRouter } from "next/navigation";
 
 export default function useLogout() {

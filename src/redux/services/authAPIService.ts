@@ -1,4 +1,4 @@
-import { apiService } from "@/app/redux/services/apiService";
+import { apiService } from "@/redux/services/apiService";
 
 interface User {
   first_name: string;

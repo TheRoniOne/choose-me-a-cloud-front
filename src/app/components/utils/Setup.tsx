@@ -3,13 +3,13 @@
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
-import { useAppDispatch } from "@/app/redux/hooks";
+import { useAppDispatch } from "@/redux/hooks";
 import {
   setAuth,
   finishInitialLoad,
   startInitialLoad,
-} from "@/app/redux/slices/authSlice";
-import { useVerifyMutation } from "@/app/redux/services/authAPIService";
+} from "@/redux/slices/authSlice";
+import { useVerifyMutation } from "@/redux/services/authAPIService";
 
 export default function Setup() {
   const [verify] = useVerifyMutation();
