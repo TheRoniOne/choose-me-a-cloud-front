@@ -1,5 +1,11 @@
 import React from "react";
-import Login from "@/app/components/login";
+import { Metadata } from "next";
+import { LoginForm } from "@/app/components/Forms";
+
+export const metadata: Metadata = {
+  title: "Login",
+  description: "Choose me a cloud login page",
+};
 
 const LoginPage = () => {
   return (
@@ -8,7 +14,7 @@ const LoginPage = () => {
         <h1 className="text-3xl font-semibold text-center text-gray-700">
           Choose me a cloud
         </h1>
-        <Login />
+        <LoginForm />
       </div>
     </div>
   );
