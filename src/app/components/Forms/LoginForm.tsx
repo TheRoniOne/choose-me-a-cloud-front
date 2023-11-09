@@ -1,27 +1,32 @@
 "use client";
 
+import { useAppDispatch } from "@/app/redux/hooks";
 import {
   LoginArgs,
   useLoginMutation,
 } from "@/app/redux/services/authAPIService";
+import { setAuth } from "@/app/redux/slices/authSlice";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
 const LoginForm = () => {
-  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginArgs>();
+
   const [login, { isLoading }] = useLoginMutation();
+  const router = useRouter();
+  const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<LoginArgs> = (data) =>
     login(data)
       .unwrap()
       .then(() => {
+        dispatch(setAuth());
         toast.success("Login successful");
         router.push("/");
       })
